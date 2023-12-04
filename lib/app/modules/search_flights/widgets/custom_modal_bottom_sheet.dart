@@ -141,7 +141,7 @@ class _InfoBottomSheetState extends State<InfoBottomSheet> {
   int adultCount = 0;
   int childrenCount = 0;
   int infantCount = 0;
-  String cabin = 'Economy';
+  String cabin = 'ECONOMY';
 
   @override
   Widget build(BuildContext context) {
@@ -185,12 +185,12 @@ class _InfoBottomSheetState extends State<InfoBottomSheet> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      cabinBtn('Economy'),
+                      cabinBtn('ECONOMY'),
                       SizedBox(
                         height: 2.w,
                       ),
                       cabinBtn(
-                        'Business',
+                        'Business'.toUpperCase(),
                       ),
                     ],
                   ),
@@ -198,11 +198,11 @@ class _InfoBottomSheetState extends State<InfoBottomSheet> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      cabinBtn('Premium'),
+                      cabinBtn('Premium'.toUpperCase()),
                       SizedBox(
                         height: 2.w,
                       ),
-                      cabinBtn('First'),
+                      cabinBtn('First'.toUpperCase()),
                     ],
                   ),
                 ],

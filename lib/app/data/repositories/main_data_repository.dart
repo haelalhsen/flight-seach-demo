@@ -44,6 +44,7 @@ class MainDataRepository {
         'maxPrice': null,
         'max': 15,
       });
+      print(cabin);
       if (response.statusCode == 200) {
         Respons res = Respons.fromJson(response.data);
         if(res.status != 1){

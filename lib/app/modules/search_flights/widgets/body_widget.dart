@@ -1,8 +1,11 @@
+import 'package:flight_task_test/app/data/models/route_argument.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+import '../../../routes/app_pages.dart';
 import 'custom_modal_bottom_sheet.dart';
 
 class BodyWidget extends StatefulWidget {
@@ -16,7 +19,7 @@ class _BodyWidgetState extends State<BodyWidget> {
   int adultCount = 0;
   int childrenCount = 0;
   int infantCount = 0;
-  String cabin = 'Economy';
+  String cabin = 'ECONOMY';
   DateTime selectedDate = DateTime.now();
 
   @override
@@ -282,7 +285,15 @@ class _BodyWidgetState extends State<BodyWidget> {
   Widget searchBtn() {
     return GestureDetector(
       onTap: (){
-        
+        Get.toNamed(Routes.SEARCH_RESULT,arguments: RouteArgument(
+          param: {
+            'date': selectedDate,
+            'adults': adultCount,
+            'children': childrenCount,
+            'infants': infantCount,
+            'cabin': cabin,
+          }
+        ));
       },
       child: Container(
         width: 80.w,

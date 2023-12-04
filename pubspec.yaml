@@ -36,7 +36,8 @@ dependencies:
   # cached network image
   cached_network_image: ^3.2.3
   flutter_animate: ^4.2.0+1
-
+  # for loading effects
+  shimmer: ^2.0.0
   # For date piker
   syncfusion_flutter_datepicker: ^22.2.5
   intl: ^0.18.1

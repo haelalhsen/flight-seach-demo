@@ -7,6 +7,7 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const ANIMATION_SCREEN = _Paths.ANIMATION_SCREEN;
   static const SEARCH_FLIGHTS = _Paths.SEARCH_FLIGHTS;
+  static const SEARCH_RESULT = _Paths.SEARCH_RESULT;
 }
 
 abstract class _Paths {
@@ -15,4 +16,5 @@ abstract class _Paths {
   static const HOME = '/home';
   static const ANIMATION_SCREEN = '/animation-screen';
   static const SEARCH_FLIGHTS = '/search-flights';
+  static const SEARCH_RESULT = '/search-result';
 }

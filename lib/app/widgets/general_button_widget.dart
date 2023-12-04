@@ -34,7 +34,7 @@ class GeneralButton extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: color,
-          borderRadius: const BorderRadius.all(Radius.circular(15)),
+          borderRadius: const BorderRadius.all(Radius.circular(1)),
           border: Border.all(width: 2, color: borderColor!),
         ),
         child: Text(

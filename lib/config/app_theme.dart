@@ -53,7 +53,7 @@ class MyAppTheme {
       displayMedium: TextStyle(
         fontSize: 15.sp,
         fontWeight: FontWeight.w400,
-        color: AppColors.mainDarkColor(1),
+        color: Colors.grey.withOpacity(0.5),
       ),
       displaySmall: TextStyle(
         fontSize: 13.sp,

@@ -32,12 +32,14 @@ dependencies:
   # A flexible widget for user notification.
   another_flushbar: ^1.12.29
   fluttertoast: ^8.2.1
+  modal_bottom_sheet: ^3.0.0-pre
   # cached network image
   cached_network_image: ^3.2.3
   flutter_animate: ^4.2.0+1
 
   # For date piker
-  syncfusion_flutter_datepicker: ^23.2.6
+  syncfusion_flutter_datepicker: ^22.2.5
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0

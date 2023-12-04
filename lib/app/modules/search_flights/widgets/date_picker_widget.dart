@@ -34,27 +34,15 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
   }
   @override
   Widget build(BuildContext context) {
-    final Widget cardView = Card(
-        elevation: 10,
-        margin: const EdgeInsets.all(30),
-        child: Container(
-          padding: const EdgeInsets.fromLTRB(5, 0, 5, 5),
-          child: _getGettingStartedDatePicker(_controller, context),
-        ));
-    return Scaffold(
-      body: Column(children: <Widget>[
-        Expanded(
-            flex:  8,
-            child:  ListView(children: <Widget>[
-              SizedBox(
-                height: 450,
-                child: cardView,
-              )
-            ])),
-        Expanded(
-            flex: 1,
-            child: Container())
-      ]),
+    final Widget cardView = Container(
+      height: 450,
+      margin: const EdgeInsets.all(30),
+      padding: const EdgeInsets.fromLTRB(5, 0, 5, 5),
+      child: _getGettingStartedDatePicker(_controller, context),
+    );
+    return SizedBox(
+      height: 450,
+      child: cardView,
     );
   }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -81,6 +82,9 @@ class SearchResultView extends GetView<SearchResultController> {
   Widget errorWidget(BuildContext context) {
     return CustomScrollView(
       slivers: [
+        SliverToBoxAdapter(
+          child: headerWidget(context),
+        ),
         SliverPadding(
           padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 25.w),
           sliver: SliverToBoxAdapter(
@@ -127,6 +131,9 @@ class SearchResultView extends GetView<SearchResultController> {
   Widget emptyWidget(BuildContext context) {
     return CustomScrollView(
       slivers: [
+        SliverToBoxAdapter(
+          child: headerWidget(context),
+        ),
         SliverPadding(
           padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 25.w),
           sliver: SliverToBoxAdapter(
@@ -158,7 +165,7 @@ class SearchResultView extends GetView<SearchResultController> {
 
   Widget flightItemWidget(int index, BuildContext context) {
     return Card(
-      margin: const EdgeInsets.all(4),
+      margin: const EdgeInsets.symmetric(horizontal: 8,vertical: 8),
       elevation: 1,
       color: Colors.white,
       child: Padding(
@@ -167,20 +174,24 @@ class SearchResultView extends GetView<SearchResultController> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  controller.flightList.elementAt(index).source!,
-                  style: Theme.of(context).textTheme.displayLarge,
-                ),
-              ],
-            ),
-
+            firstRowWidget(index, context),
             const SizedBox(
               height: 8,
             ),
+            secondRowWidget(index,context),
+            const SizedBox(
+              height: 8,
+            ),
+            thirdRowWidget(index,context),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: const Divider(
+                thickness: 2,
+                indent: 10,
+                endIndent: 10,
+              ),
+            ),
+            forthRowWidget(index,context),
           ],
         ),
       ),
@@ -261,6 +272,130 @@ class SearchResultView extends GetView<SearchResultController> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget firstRowWidget(int index, BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          controller.getMDfromDateStr(controller.flightList
+              .elementAt(index)
+              .itineraries!
+              .first
+              .segments!
+              .first
+              .departure!
+              .at!),
+          style: Theme.of(context).textTheme.displayLarge,
+        ),
+        Text(
+          controller.getMDfromDateStr(controller.flightList
+              .elementAt(index)
+              .itineraries!
+              .first
+              .segments!
+              .first
+              .arrival!
+              .at!),
+          style: Theme.of(context).textTheme.displayLarge,
+        ),
+      ],
+    );
+  }
+
+  Widget secondRowWidget(int index, BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          controller.flightList
+              .elementAt(index)
+              .itineraries!
+              .first
+              .segments!
+              .first
+              .departure!
+              .iataCode!,
+          style: Theme.of(context).textTheme.displayLarge,
+        ),
+        Expanded(
+          child: Text(
+            '-----------------🛩️----------------',
+            style: Theme.of(context).textTheme.displayLarge,
+            textAlign: TextAlign.center,
+          ),
+        ),
+        Text(
+          controller.flightList
+              .elementAt(index)
+              .itineraries!
+              .first
+              .segments!
+              .first
+              .arrival!
+              .iataCode!,
+          style: Theme.of(context).textTheme.displayLarge,
+        ),
+      ],
+    );
+  }
+
+  Widget thirdRowWidget(int index, BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          controller.getTimeFromDateStr(controller.flightList
+              .elementAt(index)
+              .itineraries!
+              .first
+              .segments!
+              .first
+              .departure!
+              .at!),
+          style: Theme.of(context).textTheme.displayLarge,
+        ),
+        Text(
+          controller.getTimeFromDateStr(controller.flightList
+              .elementAt(index)
+              .itineraries!
+              .first
+              .segments!
+              .first
+              .arrival!
+              .at!),
+          style: Theme.of(context).textTheme.displayLarge,
+        ),
+      ],
+    );
+  }
+  Widget forthRowWidget(int index, BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          controller.getNumStops(controller.flightList
+              .elementAt(index)
+              .itineraries!
+              .first
+              .segments!
+              .first
+              .numberOfStops!),
+          style: Theme.of(context).textTheme.displayLarge,
+        ),
+        Text(
+          '\$${controller.flightList
+              .elementAt(index)
+              .price!.base!}',
+          style: Theme.of(context).textTheme.displayLarge,
+        ),
+      ],
     );
   }
 }

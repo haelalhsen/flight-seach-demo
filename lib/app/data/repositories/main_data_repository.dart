@@ -40,7 +40,7 @@ class MainDataRepository {
         'children': childCount,
         'infants': infantsCount,
         'cabin': cabin,
-        'nonStop': true,
+        'nonStop': false,
         'maxPrice': null,
         'max': 15,
       });

@@ -66,4 +66,18 @@ class SearchResultController extends GetxController {
     flightList.value = [];
     listenForFlights();
   }
+
+  String getMDfromDateStr(String dateStr){
+    DateTime dte=DateTime.parse(dateStr);
+    String str= DateFormat(DateFormat.MONTH_DAY).format(dte);
+    return str;
+  }
+  String getTimeFromDateStr(String dateStr){
+    DateTime dte=DateTime.parse(dateStr);
+    String str= DateFormat(DateFormat.HOUR_MINUTE_GENERIC_TZ).format(dte);
+    return str;
+  }
+  String getNumStops(int stops){
+    return stops==0? 'Non-Stop': '$stops Stops';
+  }
 }
